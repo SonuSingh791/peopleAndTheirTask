@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="success-alert">
+        <span class="material-icons success-icon">check_circle</span>You have successfully completed your task
+    </div>
+    <div class="danger-alert">
+        <span class="material-icons success-icon">warning</span>Please complete your task first
+    </div>
+    <div class="danger-alert delete-alert">
+        <span class="material-icons success-icon">warning</span>You haven't completed your task
+    </div>
+    <div class="theme-mode">
+        <span class="material-icons theme">dark_mode</span>
+    </div>
+    <button onclick="myFunction()" class="dropbtn">Select People</button>
+        <div class="dropdown">
+            <div class="dropdown-wrapper">
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <a href="#about">Shubham Arya</a>
+                    <a href="#base">Shaurabh Sinha</a>
+                    <a href="#blog">Prince Pandey</a>
+                    <a href="#contact">Rahul Gupta</a>
+                    <a href="#custom">Naman Gupta</a>
+                    <a href="#support">Chandan Rajbhar</a>
+                    <a href="#tools">Sonu Ranjan</a>
+                    <a href="#">Ajay Singh</a>
+                    <a href="#">Aman Jaiswal</a>
+                    <a href="#">Anshuman Ankit</a>
+                </div>
+                <button class="add-people-btn">Add more people</button>
+            </div>
+        </div>
+       
+        <div class="modal">
+            <span class="material-icons close">close</span>
+            <p>Assign Task to <strong class="name">Someone</strong></p>
+            
+            <div class="textarea-container">
+                <textarea spellcheck="false" name="ticket_name" id="ticket_name" ></textarea>
+            </div>
+            <button class="assign-btn">Assign</button>
+        </div>
+        <div class="input-people">
+            <span class="material-icons close-input">close</span>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" placeholder="Enter Your Name" id="name">
+            </div>
+            <div>
+                <label for="c-no">Contact Number</label>
+                <input type="number" placeholder="Enter Your Contact Number" id="c-no">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" placeholder="Enter Your Email" id="email">
+            </div>
+            <button class="add-btn" >Add</button>
+        </div>
+        <!-- <div class="assign-task-container">
+            <p>Assign Task to <strong class="name">Someone</strong></p>
+            <input type="text" class="assign-task"> -->
+            <!-- <button class="assing-btn">Assign</button>
+        </div> -->
+    </div>
+
+    <div class="people-task-container">
+        <!-- <h1 class="selected-people">people</h1> -->
+        <!-- <div class="main-container"> -->
+            <!-- <div class="task-container">
+                
+                <h2 class="task">Task</h2>
+                <div class="submit-task">
+                    <button class="upload-btn">Upload<input type="file" hidden/></button>
+                    <button class="">Submit</button>
+                </div>
+                <div class="lock">
+                    <div class="lock material-icons">lock_open</div>
+                </div> -->
+                
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- <div class="people-task-container">
+        <h1 class="selected-people"></h1>
+        <div class="task-container">
+            <h2 class="task"></h2>
+            <div class="submit-task">
+                <input type="file">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div> -->
+
+    <script  src="./script.js"></script>
+</body>
+</html>
