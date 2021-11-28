@@ -17,6 +17,7 @@ let assignBtn = document.querySelector(".assign-btn");
 let ticketName = document.getElementById("ticket_name");
 let successAlert = document.querySelector(".success-alert")
 let dangerAlert = document.querySelector(".danger-alert")
+let textAlert = document.querySelector(".text-alert");
 let deleteAlert = document.querySelector(".delete-alert");
 let theme = document.querySelector(".theme");
 let dropBtn = document.querySelector(".dropbtn")
@@ -65,17 +66,25 @@ function myFunction() {
       inputContactNo.value=""
   })
   addBtn.addEventListener("click", (e) => {
-    let a = document.createElement("a");
-    a.setAttribute("href", "#");
-    a.innerHTML=inputName.value
-    dropdownContent.appendChild(a);
-    aEle = dropdownContent.querySelectorAll("a");
-    console.log(aEle)
-    inputPeople.style.display = "none";
-    inputName.value=""
-    inputEmail.value=""
-    inputContactNo.value=""
-    handlePeople()
+      if(inputName.value===""){
+          textAlert.style.top = "0px"
+          setTimeout(() => {
+              textAlert.style.top = "-4rem";
+          }, 2000);
+      }
+      else{
+          let a = document.createElement("a");
+          a.setAttribute("href", "#");
+          a.innerHTML=inputName.value
+          dropdownContent.appendChild(a);
+          aEle = dropdownContent.querySelectorAll("a");
+          console.log(aEle)
+          inputPeople.style.display = "none";
+          inputName.value=""
+          inputEmail.value=""
+          inputContactNo.value=""
+          handlePeople()
+      }
   })
   addPeopleBtn.addEventListener("click", (e) => {
     //   console.log(e)
@@ -97,7 +106,8 @@ function fun(a)  {
     peopleName.innerText = a.innerText;
 }
 assignBtn.addEventListener("click", (e) => {
-    let task = [];
+    if(ticketName.value!==""){
+        let task = [];
     let objIdx = taskArr.find((o)=> o.Name==peopleName.innerText);
     // let pos = taskAr
     // console.log(idx)
@@ -123,13 +133,34 @@ assignBtn.addEventListener("click", (e) => {
     // console.log(peopleName.innerText)
     let idx = taskArr.findIndex((o) => o.Name===peopleName.innerText)
     console.log(idx)
-    setTimeout(() => {
-        let noOfTaskInArow =Math.ceil(taskArr[idx].Tasks.length/4) 
-        console.log(noOfTaskInArow)
-        let Ypos = 400 * parseInt(taskArr[idx].Position) + (noOfTaskInArow * 300)
-        window.scrollTo(0, Ypos);
-        
-    }, 100);
+    // if(window.innerWidth > 300)
+    // console.log(window.innerWidth)
+    if(window.innerWidth > 300 && window.innerWidth < 768){
+        setTimeout(() => {
+            let noOfTaskInArow =Math.ceil(taskArr[idx].Tasks.length) 
+            console.log(noOfTaskInArow)
+            let Ypos = 400 * parseInt(taskArr[idx].Position) + (noOfTaskInArow * 280)
+            window.scrollTo(0, Ypos);
+            
+        }, 100);
+    }
+    else{
+        setTimeout(() => {
+            let noOfTaskInArow =Math.ceil(taskArr[idx].Tasks.length/4) 
+            console.log(noOfTaskInArow)
+            let Ypos = 400 * parseInt(taskArr[idx].Position) + (noOfTaskInArow * 300)
+            window.scrollTo(0, Ypos);
+            
+        }, 100);
+    }
+    }
+    else{
+        textAlert.style.top = "0px";
+        setTimeout(() => {
+            textAlert.style.top = "-4rem";
+        }, 2000);
+    }
+    
 })
 
 function PeopleAndTheirTask(){
@@ -247,3 +278,41 @@ function handleDelete(submitTaskContainer, idx, name,h1){
       }
     }
   }
+
+  modalContainer.addEventListener("mousedown", (event) => {
+    let shiftX = event.clientX - modalContainer.getBoundingClientRect().left;
+    let shiftY = event.clientY - modalContainer.getBoundingClientRect().top;
+  
+    modalContainer.style.position = 'absolute';
+    modalContainer.style.zIndex = 1000;
+    // document.body.append(modalContainer);
+  
+    moveAt(event.pageX, event.pageY);
+  
+    // moves the modalContainer at (pageX, pageY) coordinates
+    // taking initial shifts into account
+    function moveAt(pageX, pageY) {
+      modalContainer.style.left = pageX - shiftX + 'px';
+      modalContainer.style.top = pageY - shiftY + 'px';
+    }
+  
+    function onMouseMove(event) {
+      moveAt(event.pageX, event.pageY);
+    }
+  
+    // move the modalContainer on mousemove
+    document.addEventListener('mousemove', onMouseMove);
+  
+    // drop the modalContainer, remove unneeded handlers
+    modalContainer.onmouseup = function() {
+      document.removeEventListener('mousemove', onMouseMove);
+      modalContainer.onmouseup = null;
+    };
+  
+  
+  modalContainer.ondragstart = function() {
+    return false;
+  };
+  })
+
+  
