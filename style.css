@@ -21,58 +21,7 @@ body{
   /* background-color: #161623; */
 }
 
-body::before {
-    content: "";
-    position: var(--position);
-    bottom: -250px;
-    right: -350px;
-    /* left: var(--beforeLeft); */
-    /* width: 100%;
-    height: 100%; */
-    width: 50%;
-    height: 700px;
-    border-radius: 50%;
-    background: linear-gradient(#f00, #f0f);
-    /* clip-path: circle(30% at right 70%); */
 
-    display: var(--display);
-    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-    animation: 3s before;
-  }
-  @keyframes before {
-      0%{
-          transform: scale(0.1);
-          background: linear-gradient(#2196f3, #e91e63);
-      }
-      100%{
-          transform: scale(1);
-      }
-  }
-
-  body::after{
-    content: "";
-    position: var(--position);
-    top: 75%;
-    left: var(--afterLeft);
-    width: 770px;
-    height: 400px;
-    background: linear-gradient(#2196f3, #e91e63);
-    /* clip-path: circle(30% at left 50%); */
-    border-radius: 50%;
-    z-index: -1;
-    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-    animation: 3s after;
-}
-@keyframes after {
-    0%{
-        transform: scale(0.1);
-        /* background: #0f5132; */
-        background: linear-gradient(#f00, #f0f);
-    }
-    100%{
-        transform: scale(1);
-    }
-}
 .success-alert{
     position: fixed;
     width: 50vw;
@@ -570,6 +519,7 @@ body::before {
         -webkit-backdrop-filter: blur(0px);
         backdrop-filter: blur(0px);
     }
+    
 
 }
 @media screen and (min-width: 426px) and (max-width:1024px){
@@ -600,4 +550,120 @@ body::before {
         z-index: 50;
         top: 1rem;
     }
+}
+@media screen and (min-width:1024px) and (max-width:1500px) {
+    body::before {
+        content: "";
+        position: var(--position);
+        bottom: -250px;
+        right: -350px;
+        /* left: var(--beforeLeft); */
+        /* width: 100%;
+        height: 100%; */
+        width: 50%;
+        height: 700px;
+        border-radius: 50%;
+        background: linear-gradient(#f00, #f0f);
+        /* clip-path: circle(30% at right 70%); */
+    
+        display: var(--display);
+        transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+        animation: 3s before;
+      }
+      @keyframes before {
+          0%{
+              transform: scale(0.1);
+              background: linear-gradient(#2196f3, #e91e63);
+          }
+          100%{
+              transform: scale(1);
+          }
+      }
+    
+      body::after{
+        content: "";
+        position: var(--position);
+        top: 75%;
+        left: var(--afterLeft);
+        width: 770px;
+        height: 400px;
+        background: linear-gradient(#2196f3, #e91e63);
+        /* clip-path: circle(30% at left 50%); */
+        border-radius: 50%;
+        z-index: -1;
+        transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+        animation: 3s after;
+    }
+    @keyframes after {
+        0%{
+            transform: scale(0.1);
+            /* background: #0f5132; */
+            background: linear-gradient(#f00, #f0f);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+}
+@media screen and (min-width:1470px) {
+    .dropbtn{
+        width: 50rem;
+        height: 8rem;
+        left: calc((100vw - 50rem) / 2);
+        font-size: 3rem;
+    }
+    .dropdown{
+        top: 8rem;
+    }
+    .dropdown-wrapper{
+        width: 50rem;
+        max-height: 43rem;
+        left: calc((100vw - 50rem) / 2);
+        font-size: 2rem;
+        overflow-y: auto;
+    }
+    #myInput{
+        height: 5rem;
+        font-size: 2rem;
+    }
+    .add-people-btn{
+        top: calc(8rem + 100rem);
+        width: 50rem;
+        height: 4rem;
+        font-size: 2rem;
+    }
+    .modal{
+        width: 35rem;
+        height: 30rem;
+        left: calc((100vw - 35rem) / 2);
+    }
+    .modal p{
+        font-size: 2rem;
+    }
+    .close{
+        height: 2rem;
+        width: 2rem;
+        font-size: 2rem;
+    }
+    .assign-btn{
+        width: 7rem;
+        height: 4rem;
+        font-size: 2rem;
+    }
+    .input-people{
+        width: 50rem;
+        height: 30rem;
+        left: calc((100vw - 50rem) / 2);
+    }
+    .input-people label{
+        font-size: 2rem;
+    }
+    .input-people input{
+        padding: 1.8rem;
+        font-size: 2rem;
+    }
+    .add-people-btn{
+        height: 4rem;
+    }
+
 }
